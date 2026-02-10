@@ -1,15 +1,15 @@
 import cadquery as cq
-import math
+from math import atan, sin, cos, pi
 
-g_ratio = 10
+g_ratio = 8
 # =========================
 # PARAMETERS (mm)
 # =========================
 N = g_ratio+1          # number of rollers
-R = 35.0        # roller pitch circle radius
-Rr = 5.0        # roller radius
+R = 20.0        # roller pitch circle radius
+Rr = 5.0       # roller radius
 E = 1.5         # eccentricity
-thickness = 7.0  # disc thickness
+thickness = 6.0  # disc thickness
 steps = 720     # curve resolution (higher = smoother)
 
 print(f"Ratio = {N-1}")
@@ -20,20 +20,15 @@ print(f"Ratio = {N-1}")
 points = []
 
 for i in range(steps + 1):
-    t = 2 * math.pi * i / steps
+    t = 2 * pi * i / steps
 
-    phi = math.atan(
-        math.sin((1 - N) * t) /
-        ((R / (E * N)) - math.cos((1 - N) * t))
+    phi = atan(
+        sin((1 - N) * t) /
+        ((R / (E * N)) - cos((1 - N) * t))
     )
 
-    x = (R * math.cos(t)) \
-        - (Rr * math.cos(t + phi)) \
-        - (E * math.cos(N * t))
-
-    y = (-R * math.sin(t)) \
-        + (Rr * math.sin(t + phi)) \
-        + (E * math.sin(N * t))
+    x = (R*cos(t))-(Rr*cos(t+atan(sin((1-N)*t)/((R/(E*N))-cos((1-N)*t)))))-(E*cos(N*t))
+    y = (-R*sin(t))+(Rr*sin(t+atan(sin((1-N)*t)/((R/(E*N))-cos((1-N)*t)))))+(E*sin(N*t))
 
     points.append((x, y))
 
