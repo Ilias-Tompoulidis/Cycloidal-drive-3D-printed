@@ -6,7 +6,7 @@ g_ratio = 8
 # PARAMETERS (mm)
 # =========================
 N = g_ratio+1          # number of rollers
-R = 20.0        # roller pitch circle radius
+R = 25.0        # roller pitch circle radius
 Rr = 5.0       # roller radius
 E = 1.5         # eccentricity
 thickness = 6.0  # disc thickness
