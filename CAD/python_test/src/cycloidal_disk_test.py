@@ -11,6 +11,7 @@ Rr = 5.0       # roller radius
 E = 1.5         # eccentricity
 thickness = 6.0  # disc thickness
 steps = 720     # curve resolution (higher = smoother)
+scale = 0.98
 
 print(f"Ratio = {N-1}")
 
@@ -29,8 +30,10 @@ for i in range(steps + 1):
 
     x = (R*cos(t))-(Rr*cos(t+atan(sin((1-N)*t)/((R/(E*N))-cos((1-N)*t)))))-(E*cos(N*t))
     y = (-R*sin(t))+(Rr*sin(t+atan(sin((1-N)*t)/((R/(E*N))-cos((1-N)*t)))))+(E*sin(N*t))
+    x_scaled = x * scale
+    y_scaled = y * scale
 
-    points.append((x, y))
+    points.append((x_scaled, y_scaled))
 
 # =========================
 # BUILD CAD MODEL
@@ -45,4 +48,4 @@ disc = (
 # =========================
 # EXPORT
 # =========================
-cq.exporters.export(disc, "cycloidal_disc.step")
+cq.exporters.export(disc, "cycloidal_disc_scaled.step")
