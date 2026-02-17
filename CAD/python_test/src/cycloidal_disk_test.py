@@ -1,17 +1,17 @@
 import cadquery as cq
 from math import atan, sin, cos, pi
 
-g_ratio = 8
+g_ratio = 9
 # =========================
 # PARAMETERS (mm)
 # =========================
 N = g_ratio+1          # number of rollers
-R = 25.0        # roller pitch circle radius
-Rr = 5.0       # roller radius
-E = 1.5         # eccentricity
-thickness = 6.0  # disc thickness
+R = 32.5      # roller pitch circle radius
+Rr = 5.0      # roller radius
+E = 2.0      # eccentricity
+thickness = 5.0  # disc thickness
 steps = 720     # curve resolution (higher = smoother)
-scale = 0.98
+scale = 0.99
 
 print(f"Ratio = {N-1}")
 
@@ -48,4 +48,4 @@ disc = (
 # =========================
 # EXPORT
 # =========================
-cq.exporters.export(disc, "cycloidal_disc_scaled.step")
+cq.exporters.export(disc, "cycloidal_disc_scaled_gr9.step")
