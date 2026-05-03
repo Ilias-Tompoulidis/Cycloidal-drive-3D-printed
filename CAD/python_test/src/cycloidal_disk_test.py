@@ -1,17 +1,17 @@
 import cadquery as cq
 from math import atan, sin, cos, pi
 
-g_ratio = 9
+g_ratio = 10
 # =========================
 # PARAMETERS (mm)
 # =========================
 N = g_ratio+1          # number of rollers
-R = 32.5      # roller pitch circle radius
+R = 25.0     # roller pitch circle radius
 Rr = 5.0      # roller radius
-E = 2.0      # eccentricity
+E = 1.5      # eccentricity
 thickness = 5.0  # disc thickness
 steps = 720     # curve resolution (higher = smoother)
-scale = 0.99
+scale = 1.0
 
 print(f"Ratio = {N-1}")
 
